@@ -32,7 +32,7 @@ class Filme{
     // Criando 3 objetos 
     const filme1 = new Filme ('O Planeta do Tesouro', 2003, 'Aventura', 95)
     const filme2 = new Filme ('A Nova Onda do Imperador', 2000, 'Aventura', 78)
-    const filme3 = new Filme ('Spider-Man 3', 2007, 'Ação', 148)
+    const filme3 = new Filme ('Spider-Man 3', 2007, 'Ação/Sci-fi', 148)
 
     // Exibir informações antes de realizar avaliação e assisir
     console.log('Exibindo as informações antes de avaliar e assisir')

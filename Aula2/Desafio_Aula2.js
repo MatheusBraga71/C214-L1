@@ -20,12 +20,12 @@ class Filme{
         console.log(''); // Puramente por estética, para os logs ficarem organizados
     }
 
-    assistir(){
+    assistir(){ // Método que permite definir um filme como assistido.
         this.assistido = 'Sim';
         console.log(`Filme ${this.titulo} marcado como assistido.`);
     }
 
-    avaliar(nota){
+    avaliar(nota){ // Método que permite definir uma nota para um filme
         if (nota >= 0 && nota <= 10){
             this.avaliacao = nota;
             console.log(`Nota adicionada para o filme ${this.titulo}`);
@@ -35,8 +35,9 @@ class Filme{
     }
 }
 
-    const listaFilmes = [];
+    const listaFilmes = []; // Vetor que armazena a lista de filmes que serão adicionados
 
+    // Inicialização do sistema para a inserção de dados via terminal
     const readline = require('readline');
 
     const rl = readline.createInterface({
@@ -44,7 +45,7 @@ class Filme{
         output: process.stdout
     });
 
-function exibirMenu() {
+function exibirMenu() { // Função que exibe o menu, mostra as opções para o usuário
     console.log("--------------------------------");
     console.log(`[1] - Adicionar um novo filme à lista.`);
     console.log(`[2] - Marcar um filme da lista como assistido.`);
@@ -54,12 +55,12 @@ function exibirMenu() {
     console.log(``); //Puramente por estética
 }
 
-function adicionarFilme(){
+function adicionarFilme(){ // função que adiciona o(s) filme(s) na lista de filmes
     rl.question('Titulo do filme: ', (titulo) => {
         rl.question('Ano de lançamento: ', (ano) => {
           rl.question('Gênero: ', (genero) => {
             rl.question('Duração em minutos: ', (duracao) => {
-                const filme = new Filme(titulo, ano, genero, duracao);
+                const filme = new Filme(titulo, ano, genero, duracao); // Instânciando o filme como um objeto da classe Filme
                 listaFilmes.push(filme);
                 console.log('Filme adicionado com sucesso.');
                 console.log('');
@@ -70,14 +71,15 @@ function adicionarFilme(){
     });  
 }
 
-function marcarAssistido() {
+function marcarAssistido() { // Função que permite definir um filme como assistido.
+    // Exibe na tela os nomes dos filmes, juntamente com o número que o representa (índice)
     for (let i = 0; i < listaFilmes.length; i++) {
         console.log(`${i+1} - ${listaFilmes[i].titulo}`);
       }
     rl.question('Digite o número do filme que deseja marcar como assistido: ', (numero) => {
         const index = parseInt(numero) - 1;
         if (index >= 0 && index < listaFilmes.length) {
-        listaFilmes[index].assistir();
+        listaFilmes[index].assistir(); // Utilizando o método da classe Filme
         } else {
             console.log('Número de filme inválido.');
         }
@@ -86,7 +88,8 @@ function marcarAssistido() {
     
   }
 
-function avaliarFilme() {
+function avaliarFilme() { // Função que permite avaliar um filme
+    // Exibe na tela os nomes dos filmes, juntamente com o número que o representa (índice)
     for (let i = 0; i < listaFilmes.length; i++) {
         console.log(`${i+1} - ${listaFilmes[i].titulo}`);
     }
@@ -95,7 +98,7 @@ function avaliarFilme() {
         if (index >= 0 && index < listaFilmes.length) {
         rl.question('Digite a sua avaliação (de 1 a 10): ', (avaliacao) => {
             const nota = parseInt(avaliacao);
-            listaFilmes[index].avaliar(nota);
+            listaFilmes[index].avaliar(nota); // Utilizando o método da classe Filme
             console.log('');
             iniciarMenu();
         });
@@ -109,20 +112,20 @@ function avaliarFilme() {
     
 }
 
-function listarFilmes() {
+function listarFilmes() { // Função que realiza a exibição da lista de filmes
     console.log('Lista de Filmes:');
     for (let i = 0; i < listaFilmes.length; i++) {
-      listaFilmes[i].exibirInfo();
+      listaFilmes[i].exibirInfo(); // Utilizando o método da classe Filme
     }
     iniciarMenu();
 }
 
-function encerrarPrograma() {
+function encerrarPrograma() { // Função para finalizar a execução do programa
     console.log('Programa Finalizado!.');
     rl.close();
 }
 
-function iniciarMenu() {
+function iniciarMenu() { // Função que inicializar menu e permite a seleção das funções desejadas
     exibirMenu();
     rl.question('Digite o número da opção desejada: ', (opcao) => {
       switch (opcao) {

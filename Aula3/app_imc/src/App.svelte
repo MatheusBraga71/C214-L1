@@ -10,6 +10,8 @@
 	let imcMeta = 0; // Índice de Massa Corporal referente à meta de peso
 	let ClasseIMCMeta = "IMC da meta não classificado!" // Classificação do IMC da meta de peso
   
+	let metaPesoHabilitada = false; // Variável de controle para meta de peso
+
 	// Função para calcular o IMC
 	function calcularIMC() {
 		if (peso > 0 && altura > 0) {
@@ -20,7 +22,7 @@
 	  	}
 	}
 
-	function calcularIMC_Meta() {
+	function calcularIMC_Meta() { // Função para calcular a meta de peso
 		if (pesoMeta > 0 && altura > 0) {
 			imcMeta = (pesoMeta / Math.pow(altura, 2)).toFixed(2);
 			classificarIMC_Meta();
@@ -71,6 +73,16 @@
 		}
 	}
 
+	// Função que verifica se o botão de adicionar meta de peso foi pressionado
+	function habilitarMetaPeso() {
+    	metaPesoHabilitada = !metaPesoHabilitada;
+    	if (!metaPesoHabilitada) {
+      		pesoMeta = 0;
+      		imcMeta = 0;
+      		ClasseIMCMeta = "IMC da meta não classificado!";
+    	}
+  	}
+
 	</script>
   
   	<main>
@@ -81,16 +93,30 @@
 		<label>
 	  		Altura (m): <input type="number" bind:value={altura} on:input={calcularIMC} />
 		</label>
-		<label>
-			Peso Meta (kg): <input type="number" bind:value={pesoMeta} on:input={calcularIMC_Meta} />
-	  	</label>
+		
 		{#if imc > 0}
 		  	<p>Seu IMC é {imc}</p>
 		  	<p> {classeIMC} </p>
 		{/if}
+
+		<button on:click={habilitarMetaPeso}>
+			{#if metaPesoHabilitada}
+			  	Cancelar Meta de Peso
+			{:else}
+			  	Adicionar Meta de Peso
+			{/if}
+		</button>
+		
+		{#if metaPesoHabilitada}
+			<label>
+			Peso Meta (kg): <input type="number" bind:value={pesoMeta} on:input={calcularIMC_Meta} />
+			</label>
+		{/if}
+		
 		{#if imcMeta > 0}
 		  	<p>Se atingir a meta de peso, seu IMC será {imcMeta} e {ClasseIMCMeta} </p>
 		{/if}
+		
  	</main>
   
  	<style>
@@ -100,7 +126,7 @@
     		justify-content: center;
     		align-items: center;
     		height: 100vh;
-			background-image: url('/light.jpeg'); /* Substitua pelo caminho correto da sua imagem */
+			background-image: url('/light.jpeg'); /* Imagem de fundo */
     		background-size: cover;
 
 			font-family: 'Times New Roman', Times, serif;

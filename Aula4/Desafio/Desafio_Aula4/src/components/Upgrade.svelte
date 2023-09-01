@@ -14,9 +14,9 @@
   </script>
   
   <div>
-    <h1>Upgrades</h1>
-    <p>Multiplicador de Clique: {clickMultiplier}x</p>
-    <p>Custo do Upgrade: {$upgradeCost} pontos</p>
-    <button on:click={buyUpgrade}>Comprar Upgrade</button>
+    <h1>Melhorias</h1>
+    <p>Multiplicador de Clique: {$clickMultiplier}x</p>
+    <p>Custo da Melhoria {$clickMultiplier + 1}x: {$upgradeCost} pontos</p>
+    <button on:click={buyUpgrade}>Comprar Melhoria</button>
     <Link to="/clicker">Voltar</Link>
   </div>

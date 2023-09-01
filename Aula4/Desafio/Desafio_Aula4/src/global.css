@@ -1,0 +1,14 @@
+/* Centralize todo o texto */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Centralize o texto dentro dos componentes */
+  h1, p {
+    text-align: center;
+  }
+  

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { calcularIMC, calcularCalorias } = require('../src/imc');
+const { calcularIMC, calcularTMB } = require('../src/imc');
 
 describe('Calculadora de IMC', () => {
 
@@ -35,26 +35,31 @@ describe('Calculadora de Calorias', () => {
         const peso = 80; // peso em kilogramas
         const altura = 178; // altura em cm
         const nivelAtividade = 'moderado'; // sedentario, leve, moderado, ativo, muitoAtivo
-        const objetivo = 'perderPeso'; // perderPeso ou ganharPeso
+        objetivo = 'perderPeso'; // perderPeso ou ganharPeso
 
+        let TMBEsperado = 0;
         if(sexo === 'homem'){
-            const TMBEsperado = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * idade);
+            TMBEsperado = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * idade);
         }
         else if (sexo === 'mulher'){
-            const TMBEsperado = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * idade);
+            TMBEsperado = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * idade);
         }
-        const TMBCalculado = calcularCalorias(sexo, idade, peso, altura, nivelAtividade, objetivo)
+        const TMBCalculado = calcularTMB(sexo, idade, peso, altura)
 
-        expect()
+        expect(TMBCalculado).to.equal(TMBEsperado);
     });
 
-    
+    /*
     it('Cálculo das calorias Totais', () => {
+        const sexo = 'homem';
+        const idade = 21;
+        const peso = 80; // peso em kilogramas
+        const altura = 178; // altura em cm
+        const nivelAtividade = 'moderado'; // sedentario, leve, moderado, ativo, muitoAtivo
 
-
-
+        const caloriasTotaisEsperadas = 
     });
-    
+    */
 
 });
 

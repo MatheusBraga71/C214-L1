@@ -9,7 +9,7 @@ function calcularIMC(peso, altura) {
 
 // Função para cálculo da quantidade de calorias exigida pelo metabolismo da pessoa
 
-function calcularCalorias(sexo, idade, peso, altura, nivelAtividade, objetivo){
+function calcularTMB(sexo, idade, peso, altura, nivelAtividade, objetivo){
     let TMB; // Variável para armazenar o cálculo da Taxa de Metabolismo Basal
 
     if(sexo === 'homem'){
@@ -53,10 +53,8 @@ function calcularCalorias(sexo, idade, peso, altura, nivelAtividade, objetivo){
         metaCalorica = caloriasTotais; // Manter o peso
     }
 
-    return {
-        caloriasTotais: caloriasTotais.toFixed(2),
-        metaCalorica: metaCalorica.toFixed(2)
-    };
+    return (TMB);
 }
 
-module.exports = { calcularIMC, calcularCalorias }; // Exporta a função calcularIMC
+
+module.exports = { calcularIMC, calcularTMB }; // Exporta a função calcularIMC

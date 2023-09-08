@@ -13,8 +13,6 @@ describe('Calculadora de IMC', () => {
       expect(IMCCalculado).to.equal(IMEsperado);
     });
   
-  
-  
     it('altura = 0, entrada inadequada', () => {
       const peso = 70; // 70 kg
       const altura = 0; // 0 cm
@@ -34,8 +32,6 @@ describe('Calculadora de Calorias', () => {
         const idade = 21;
         const peso = 80; // peso em kilogramas
         const altura = 178; // altura em cm
-        //const nivelAtividade = 'moderado'; // sedentario, leve, moderado, ativo, muitoAtivo
-        //objetivo = 'perderPeso'; // perderPeso ou ganharPeso
 
         let TMBEsperado = 0;
         if(sexo === 'homem'){
@@ -49,7 +45,6 @@ describe('Calculadora de Calorias', () => {
         expect(TMBCalculado).to.equal(TMBEsperado);
     });
 
-    
     it('Cálculo das calorias Totais', () => {
         const sexo = 'homem';
         const idade = 21;
@@ -86,7 +81,4 @@ describe('Calculadora de Calorias', () => {
         expect(caloriasTotaisEsperadas).to.equal(caloriasTotaisCalculadas);
         
     });
-    
-
 });
-

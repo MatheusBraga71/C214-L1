@@ -7,9 +7,9 @@ function calcularIMC(peso, altura) {
     return (peso / (alturaMetros * alturaMetros)).toFixed(2); // Calcula o IMC com duas casas decimais
 }
 
-// Função para cálculo da quantidade de calorias exigida pelo metabolismo da pessoa
+// Função para cálculo da taxa de metabolismo basal da pessoa
 
-function calcularTMB(sexo, idade, peso, altura, nivelAtividade, objetivo){
+function calcularTMB(sexo, idade, peso, altura){
     let TMB; // Variável para armazenar o cálculo da Taxa de Metabolismo Basal
 
     if(sexo === 'homem'){
@@ -19,6 +19,13 @@ function calcularTMB(sexo, idade, peso, altura, nivelAtividade, objetivo){
         TMB = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * idade);
     }
 
+    return (TMB);
+}
+
+// Função para calculo das calorias exigidas pelo metabolismo da pessoa com base no nivel de atividade fisica
+
+function calcularCaloriasTotais(TMB, nivelAtividade){
+    
     let fatorAtividade; // Variável que converte o nivel de atividade para o coeficiente que irá alterar o TMB;
 
     switch (nivelAtividade) {
@@ -41,20 +48,8 @@ function calcularTMB(sexo, idade, peso, altura, nivelAtividade, objetivo){
 
     const caloriasTotais = TMB * fatorAtividade;
 
-    let metaCalorica; // Variável que armazena a meta de calorias, para caso a pessoa queira ganhar ou perder peso
+    return(caloriasTotais);
 
-    if (objetivo === "perderPeso") {
-        metaCalorica = caloriasTotais - 500; // Reduzir 500 calorias para perder peso
-    }
-    else if (objetivo === "ganharPeso") {
-        metaCalorica = caloriasTotais + 500; // Aumentar 500 calorias para ganhar peso
-    }
-    else {
-        metaCalorica = caloriasTotais; // Manter o peso
-    }
-
-    return (TMB);
 }
 
-
-module.exports = { calcularIMC, calcularTMB }; // Exporta a função calcularIMC
+module.exports = { calcularIMC, calcularTMB, calcularCaloriasTotais }; // Exporta a função calcularIMC

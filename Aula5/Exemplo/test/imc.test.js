@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { calcularIMC, calcularTMB } = require('../src/imc');
+const { calcularIMC, calcularTMB, calcularCaloriasTotais } = require('../src/imc');
 
 describe('Calculadora de IMC', () => {
 
@@ -34,8 +34,8 @@ describe('Calculadora de Calorias', () => {
         const idade = 21;
         const peso = 80; // peso em kilogramas
         const altura = 178; // altura em cm
-        const nivelAtividade = 'moderado'; // sedentario, leve, moderado, ativo, muitoAtivo
-        objetivo = 'perderPeso'; // perderPeso ou ganharPeso
+        //const nivelAtividade = 'moderado'; // sedentario, leve, moderado, ativo, muitoAtivo
+        //objetivo = 'perderPeso'; // perderPeso ou ganharPeso
 
         let TMBEsperado = 0;
         if(sexo === 'homem'){
@@ -49,7 +49,7 @@ describe('Calculadora de Calorias', () => {
         expect(TMBCalculado).to.equal(TMBEsperado);
     });
 
-    /*
+    
     it('Cálculo das calorias Totais', () => {
         const sexo = 'homem';
         const idade = 21;
@@ -57,9 +57,36 @@ describe('Calculadora de Calorias', () => {
         const altura = 178; // altura em cm
         const nivelAtividade = 'moderado'; // sedentario, leve, moderado, ativo, muitoAtivo
 
-        const caloriasTotaisEsperadas = 
+        const TMB = calcularTMB(sexo, idade, peso, altura);
+
+        let fatorAtividade; // Variável que converte o nivel de atividade para o coeficiente que irá alterar o TMB;
+
+        switch (nivelAtividade) {
+            case "sedentario":
+                fatorAtividade = 1.2;
+                break;
+            case "leve":
+                fatorAtividade = 1.375;
+                break;
+            case "moderado":
+                fatorAtividade = 1.55;
+                break;
+            case "ativo":
+                fatorAtividade = 1.725;
+                break;
+            case "muitoAtivo":
+                fatorAtividade = 1.9;
+                break;
+        }
+
+        const caloriasTotaisEsperadas = TMB * fatorAtividade;
+   
+        const caloriasTotaisCalculadas = calcularCaloriasTotais(TMB, nivelAtividade);
+
+        expect(caloriasTotaisEsperadas).to.equal(caloriasTotaisCalculadas);
+        
     });
-    */
+    
 
 });
 

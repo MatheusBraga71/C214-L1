@@ -1,5 +1,5 @@
-class listaTarefas {
-    constructor(titulo, data, status) {
+class Tarefa {
+    constructor(titulo, data) {
         this.titulo = titulo;
         this.data = data;
         this.status = "A fazer";
@@ -26,9 +26,31 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+function adicionarTarefa() {
+    rl.question('Titulo da tarefa: ', (titulo) => {
+        rl.question('Descrição: ', (descricao) => {
+            const tarefa = new Tarefa(titulo, descricao); // Instanciando uma tarefa
+            listaTarefas.push(tarefa);
+            console.log('Tarefa adicionada com sucesso');
+            console.log('');
+            iniciarMenu();
+        }); 
+    });
+}
+
+function visualizarLista() {
+    console.log('Lista de Tarefas: ')
+    for (let i = 0; i < listaTarefas.length; i++) {
+        listaTarefas[i].exibirLista();
+    }
+}
 
 
 
+function encerrarPrograma() {
+    console.log('Programa Finalizado!');
+    rl.close();
+}
 
 function iniciarMenu() {
     console.log("[1] - Adicionar nova tarefa.");
@@ -39,20 +61,20 @@ function iniciarMenu() {
 
     rl.question('Digite o número referente à opção desejada: ', (opcao) => {
         switch (opcao) {
-            case '1':
-
+            case '1': 
+                adicionarTarefa();
                 break;
             case '2':
+                visualizarLista();
+                break;
+            case '3': // Atualizar status
 
                 break;
-            case '3':
-
-                break;
-            case '4':
+            case '4': // Excluir tarefa
 
                 break;
             case '5':
-
+                encerrarPrograma();
                 break;
             default:
                 console.log('Opção inválida.');

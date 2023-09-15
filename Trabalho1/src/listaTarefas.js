@@ -15,7 +15,7 @@ class Tarefa {
     atualizaStatus(estado) {
         this.status = estado;
         console.log("Status da tarefa atualizado!")
-        console>log("");
+        console.log("");
     }
 }
 
@@ -65,27 +65,58 @@ function atualizarStatus() {
             console.log("");
 
             rl.question('Digite o número do status que deseja adicionar à tarefa: ', (numStatus) => {
+                let flagOk = 0; // Variável para detecção de entrada errada
                 switch (numStatus) {
                     case '1':
                         listaTarefas[index].atualizaStatus('A fazer');
+                        flagOk = 1;
                         break;
                     case '2':
                         listaTarefas[index].atualizaStatus('Em andamento');
+                        flagOk = 1;
                         break;
                     case '3':
                         listaTarefas[index].atualizaStatus('Concluída');
+                        flagOk = 1;
                         break;
                     default:
-                        console.log("Opção Inválida, retornando para o menu inicial!");
+                        console.log("Opção Inválida, selecione a tarefa novamente!");
                         console.log("");
                 }
-                iniciarMenu();
+                if(flagOk === 1){ // Se entrada estiver correta, retorna para o menu
+                    iniciarMenu();
+                }
+                else{
+                    atualizarStatus(); // Se entrada for inválida retorna para a seleção de tarefa
+                }
             });
         }
         else {
             console.log('Número de tarefa Inválido, tente novamente!');
             console.log("");
             atualizarStatus();
+        }
+    });
+}
+
+function excluirTarefa() {
+    console.log("Lista de Tarefas:")
+    for (let i = 0; i < listaTarefas.length; i++) {
+        console.log(`${i + 1} - ${listaTarefas[i].titulo}`);
+    }
+    console.log("");
+
+    rl.question('Digite o número da tarefa que deseja excluir: ', (numExcluir) => {
+        const index2 = parseInt(numExcluir) - 1;
+        if (index2 >= 0 && index2 < listaTarefas.length) {
+            listaTarefas.splice(index2, 1);
+            console.log('Tarefa excluída com sucesso!')
+            iniciarMenu();
+        }
+        else {
+            console.log('Número de tarefa Inválido, tente novamente!');
+            console.log("");
+            excluirTarefa();
         }
     });
 }
@@ -113,11 +144,11 @@ function iniciarMenu() {
             case '2':
                 visualizarLista();
                 break;
-            case '3': 
+            case '3':
                 atualizarStatus();
                 break;
-            case '4': // Excluir tarefa
-
+            case '4':
+                excluirTarefa();
                 break;
             case '5':
                 encerrarPrograma();

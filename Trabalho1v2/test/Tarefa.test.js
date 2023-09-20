@@ -72,7 +72,7 @@ describe('Testes da Lista de Tarefas', () => {
 
     });
 
-    it('Testando a função de excluir um elemento da lista', function () {
+    it('Testando função de excluir um elemento da lista', function () {
 
         const tarefa1 = new Tarefa('Tarefa 1', 'Descrição da Tarefa 1');
         const tarefa2 = new Tarefa('Tarefa 2', 'Descrição da Tarefa 2');
@@ -83,6 +83,21 @@ describe('Testes da Lista de Tarefas', () => {
 
         expect(listaTarefas.length).to.equal(1); // Verifica se removeu
         expect(listaTarefas[0].titulo).to.equal('Tarefa 2'); // Verifica se atualizou os índices
+
+    });
+
+    it('Testando função de excluir elemento da lista - índice fora dos limites', function() {
+       
+        const tarefa1 = new Tarefa('Tarefa 1', 'Descrição da Tarefa 1');
+        const tarefa2 = new Tarefa('Tarefa 2', 'Descrição da Tarefa 2');
+        listaTarefas.push(tarefa1);
+        listaTarefas.push(tarefa2);
+
+        excluirTarefa(5);
+
+        expect(listaTarefas).to.have.lengthOf(2);
+        expect(listaTarefas[0].titulo).to.equal('Tarefa 1');
+        expect(listaTarefas[1].titulo).to.equal('Tarefa 2');
 
     });
 

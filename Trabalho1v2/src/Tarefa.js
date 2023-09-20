@@ -21,18 +21,18 @@ class Tarefa {
 
 const listaTarefas = [];
 
-function adicionarTarefa(tituloTarefa, descricaoTarefa){
+function adicionarTarefa(tituloTarefa, descricaoTarefa) {
     const tarefa = new Tarefa(tituloTarefa, descricaoTarefa);
     listaTarefas.push(tarefa);
     console.log('Tarefa adicionada com sucesso!');
     console.log('');
 }
 
-function visualizarLista(){
-    if(listaTarefas.length === 0){
+function visualizarLista() {
+    if (listaTarefas.length === 0) {
         console.log('A Lista de Tarefas está vazia!');
     }
-    else{
+    else {
         console.log('Lista de Tarefas: ')
         for (let i = 0; i < listaTarefas.length; i++) {
             listaTarefas[i].exibirTarefa();
@@ -40,11 +40,11 @@ function visualizarLista(){
     }
 }
 
-function atualizarStatus(indice, statusAtualizado){
+function atualizarStatus(indice, statusAtualizado) {
     listaTarefas[indice].atualizaStatus(statusAtualizado);
 }
 
-function excluirTarefa(indice){
+function excluirTarefa(indice) {
     listaTarefas.splice(indice, 1);
     console.log('Tarefa excluída com sucesso!');
 }
@@ -60,4 +60,4 @@ excluirTarefa(5);
 visualizarLista();
 */
 
-module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus, excluirTarefa};
+module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus, excluirTarefa };

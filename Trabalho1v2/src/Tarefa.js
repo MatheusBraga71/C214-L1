@@ -40,5 +40,14 @@ function visualizarLista(){
     }
 }
 
+function atualizarStatus(indice, statusAtualizado){
+    listaTarefas[indice].atualizaStatus(statusAtualizado);
+}
 
+/*
+adicionarTarefa('teste', 'teste1');
+visualizarLista();
+atualizarStatus(0, 'Pronto');
+visualizarLista();
+*/
 module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista};

@@ -14,8 +14,8 @@ class Tarefa {
 
     atualizaStatus(estado) {
         this.status = estado;
-        console.log("Status da tarefa atualizado!")
-        console.log("");
+        //console.log("Status da tarefa atualizado!")
+        //console.log("");
     }
 }
 
@@ -24,8 +24,8 @@ const listaTarefas = [];
 function adicionarTarefa(tituloTarefa, descricaoTarefa) {
     const tarefa = new Tarefa(tituloTarefa, descricaoTarefa);
     listaTarefas.push(tarefa);
-    console.log('Tarefa adicionada com sucesso!');
-    console.log('');
+    //console.log('Tarefa adicionada com sucesso!');
+    //console.log('');
 }
 
 function visualizarLista() {
@@ -46,18 +46,7 @@ function atualizarStatus(indice, statusAtualizado) {
 
 function excluirTarefa(indice) {
     listaTarefas.splice(indice, 1);
-    console.log('Tarefa excluída com sucesso!');
+    //console.log('Tarefa excluída com sucesso!');
 }
-
-/*
-adicionarTarefa('teste', 'teste1');
-adicionarTarefa('teste2', 'teste2');
-adicionarTarefa('teste3', 'teste1');
-visualizarLista();
-
-excluirTarefa(5);
-
-visualizarLista();
-*/
 
 module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus, excluirTarefa };

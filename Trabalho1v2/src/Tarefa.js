@@ -18,3 +18,12 @@ class Tarefa {
         console.log("");
     }
 }
+
+const listaTarefas = [];
+
+function adicionarTarefa(tituloTarefa, descricaoTarefa){
+    const tarefa = new Tarefa(tituloTarefa, descricaoTarefa);
+    listaTarefas.push(tarefa);
+    console.log('Tarefa adicionada com sucesso!');
+    console.log('');
+}

@@ -1,30 +1,22 @@
 const assert = require('chai').assert;
-const { Tarefa, adicionarTarefa } = require('../src/Tarefa');
-
 const readline = require('readline');
-//const sinon = require('sinon');
-/*
-const Tarefa = require('../src/Tarefa'); // Importe a classe Tarefa aqui
-const {
-    adicionarTarefa
-} = require('../src/Tarefa'); // Importe as funções principais aqui
-*/
+const sinon = require('sinon');
+
+const { Tarefa, adicionarTarefaTeste, listaTarefas}  = require('../src/Tarefa'); // Importe a classe Tarefa aqui
 
 describe('Funções de Tarefa', function () {
     describe('adicionarTarefa', function () {
         it('deve adicionar uma tarefa à lista', function () {
-            const listaTarefas = [];
-            const novaTarefa = new Tarefa('Título da Tarefa', 'Descrição da Tarefa');
-
-            adicionarTarefa(listaTarefas, novaTarefa);
-
+        
+            adicionarTarefaTeste('Titulo de teste', 'Descriçaõ de teste');
             assert.equal(listaTarefas.length, 1);
-            //assert.deepEqual(listaTarefas[0], novaTarefa);
+            
         });
     });
 
     // Você pode criar testes similares para as outras funções
 });
+
 /*
 describe('Menu', function () {
     let rl;

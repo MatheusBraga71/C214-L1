@@ -40,9 +40,14 @@ function adicionarTarefa() {
 }
 
 function visualizarLista() {
-    console.log('Lista de Tarefas: ')
-    for (let i = 0; i < listaTarefas.length; i++) {
-        listaTarefas[i].exibirLista();
+    if (listaTarefas.length === 0) {
+        console.log('A Lista está vazia!')
+    }
+    else {
+        console.log('Lista de Tarefas: ')
+        for (let i = 0; i < listaTarefas.length; i++) {
+            listaTarefas[i].exibirLista();
+        }
     }
     iniciarMenu();
 }
@@ -163,4 +168,4 @@ function iniciarMenu() {
 }
 
 iniciarMenu(); // Inicia o loop para o menu
-module.exports = {Tarefa, adicionarTarefa};
+module.exports = { Tarefa, adicionarTarefa };

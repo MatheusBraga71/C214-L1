@@ -28,11 +28,12 @@ const rl = readline.createInterface({
 });
 
 function adicionarTarefaTeste(tituloT, descricaoT) {
-    const Tarefa = new Tarefa(tituloT, descricaoT);
-    listaTarefas.push(Tarefa);
+    const tarefa = new Tarefa(tituloT, descricaoT);
     listaTarefas.push(tarefa);
     console.log('Tarefa adicionada com sucesso');
     console.log('');
+    iniciarMenu();
+
 }
 
 /*
@@ -50,9 +51,14 @@ function adicionarTarefa() {
 */
 
 function visualizarLista() {
-    console.log('Lista de Tarefas: ')
-    for (let i = 0; i < listaTarefas.length; i++) {
-        listaTarefas[i].exibirLista();
+    if (listaTarefas.length === 0) {
+        console.log('A Lista está vazia!')
+    }
+    else {
+        console.log('Lista de Tarefas: ')
+        for (let i = 0; i < listaTarefas.length; i++) {
+            listaTarefas[i].exibirLista();
+        }
     }
     iniciarMenu();
 }
@@ -157,17 +163,17 @@ function iniciarMenu() {
         switch (opcao) {
             case '1':
                 //adicionarTarefa();
-                let tituloTarefa;
-                let descricaoTarefa;
+                //let tituloTarefa;
+                //let descricaoTarefa;
                 rl.question('Titulo da tarefa: ', (titulo) => {
                     rl.question('Descrição: ', (descricao) => {
-                        tituloTarefa = titulo;
-                        descricaoTarefa = descricao;
+                        adicionarTarefaTeste(titulo, descricao);
                     });
                 });
 
-                adicionarTarefaTeste(tituloTarefa, descricaoTarefa);
-
+                //tituloTarefa = 'teste';
+                //descricaoTarefa = 'teste';
+                //adicionarTarefaTeste(tituloTarefa, descricaoTarefa);
                 break;
             case '2':
                 visualizarLista();
@@ -239,6 +245,7 @@ function iniciarMenu() {
                 break;
 
                 */
+               break;
             case '4':
                 excluirTarefa();
                 break;
@@ -254,4 +261,4 @@ function iniciarMenu() {
 }
 
 iniciarMenu(); // Inicia o loop para o menu
-//module.exports = { Tarefa, adicionarTarefa, visualizarLista, atualizarStatus, excluirTarefa };
+module.exports = { Tarefa, adicionarTarefaTeste, listaTarefas};

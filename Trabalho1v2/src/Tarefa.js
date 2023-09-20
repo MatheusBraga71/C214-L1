@@ -44,12 +44,20 @@ function atualizarStatus(indice, statusAtualizado){
     listaTarefas[indice].atualizaStatus(statusAtualizado);
 }
 
+function excluirTarefa(indice){
+    listaTarefas.splice(indice, 1);
+    console.log('Tarefa excluída com sucesso!');
+}
 
+/*
 adicionarTarefa('teste', 'teste1');
-visualizarLista();
-atualizarStatus(0, 'Pronto');
+adicionarTarefa('teste2', 'teste2');
+adicionarTarefa('teste3', 'teste1');
 visualizarLista();
 
-console.log(listaTarefas[0].status);
+excluirTarefa(2);
+
+visualizarLista();
+*/
 
 module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus};

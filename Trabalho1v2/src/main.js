@@ -65,15 +65,15 @@ function main() {
                                 switch (numStatus) {
                                     case '1':
                                         listaTarefas[index].atualizaStatus('A fazer');
-                                        console.log('Status Atualizado com sucesso!\n');                          
+                                        console.log('Status Atualizado com sucesso!\n');
                                         break;
                                     case '2':
                                         listaTarefas[index].atualizaStatus('Em andamento');
-                                        console.log('Status Atualizado com sucesso!\n'); 
+                                        console.log('Status Atualizado com sucesso!\n');
                                         break;
                                     case '3':
                                         listaTarefas[index].atualizaStatus('Concluída');
-                                        console.log('Status Atualizado com sucesso!\n'); 
+                                        console.log('Status Atualizado com sucesso!\n');
                                         break;
                                     default:
                                         console.log("Opção Inválida!\n");
@@ -81,7 +81,7 @@ function main() {
                                 main();
                             });
                         }
-                    });                   
+                    });
                 }
                 else {
                     console.log('Não há tarefas na lista!');
@@ -90,15 +90,36 @@ function main() {
 
                 break;
             case '4':
-                rl.question('Digite o índice da tarefa a ser excluída: ', function (indice) {
-                    excluirTarefa(indice);
+
+                if (listaTarefas.length > 0) {
+                    console.log("Lista de Tarefas:")
+                    for (let i = 0; i < listaTarefas.length; i++) {
+                        console.log(`${i + 1} - ${listaTarefas[i].titulo}`);
+                    }
+                    console.log("");
+
+                    rl.question('Digite o número da tarefa que deseja excluir: ', (numExcluir) => {
+                        const index = parseInt(numExcluir) - 1;
+                        if (index >= 0 && index < listaTarefas.length) {
+                            listaTarefas.splice(index, 1);
+                            console.log('Tarefa excluída com sucesso!')
+                            main();
+                        }
+                        else {
+                            console.log('Número de tarefa Inválido!');
+                            main();
+                        }
+                    });
+                }
+                else {
+                    console.log('Não existem tarefas para serem exlcuídas!')
                     main();
-                });
+                }
 
                 break;
             case '5':
                 rl.close();
-                
+
                 break;
             default:
                 console.log('Opção inválida! Por favor, selecione uma opção válida.');

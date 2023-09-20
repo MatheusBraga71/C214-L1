@@ -50,4 +50,4 @@ visualizarLista();
 atualizarStatus(0, 'Pronto');
 visualizarLista();
 */
-module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista};
+module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus};

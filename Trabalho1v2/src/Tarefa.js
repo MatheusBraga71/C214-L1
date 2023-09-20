@@ -44,10 +44,12 @@ function atualizarStatus(indice, statusAtualizado){
     listaTarefas[indice].atualizaStatus(statusAtualizado);
 }
 
-/*
+
 adicionarTarefa('teste', 'teste1');
 visualizarLista();
 atualizarStatus(0, 'Pronto');
 visualizarLista();
-*/
+
+console.log(listaTarefas[0].status);
+
 module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus};

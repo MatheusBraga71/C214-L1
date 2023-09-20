@@ -31,6 +31,7 @@ describe('Teste da Lista de Tarefas', () => {
     });
 
     it('Testando função de visualizar a lista - Lista com Elementos', function () {
+
         // Inserindo elementos na lista 
         const tarefa1 = new Tarefa('Tarefa 1', 'Descrição da Tarefa 1');
         const tarefa2 = new Tarefa('Tarefa 2', 'Descrição da Tarefa 2');
@@ -39,12 +40,12 @@ describe('Teste da Lista de Tarefas', () => {
 
         const originalConsoleLog = console.log; // Redefinindo a função console.log temporarriamente para capturar a saída
         let consoleOutput = '';
-        console.log = function(message) {
+        console.log = function (message) {
             consoleOutput += message + '\n';
         };
 
         visualizarLista();
-        
+
         console.log = originalConsoleLog; // Restaurando a função console.log original
 
         // Verifique se a saída esperada foi gerada
@@ -60,5 +61,15 @@ describe('Teste da Lista de Tarefas', () => {
 
     });
 
+    it('Testando função de atualizar status de uma tarefa', function () {
+
+        const tarefa1 = new Tarefa('Tarefa 1', 'Descrição da Tarefa 1');
+        listaTarefas.push(tarefa1);
+
+        atualizarStatus(0, 'Em andamento');
+
+        expect(listaTarefas[0].status).to.equal('Em andamento');
+
+    });
 
 });

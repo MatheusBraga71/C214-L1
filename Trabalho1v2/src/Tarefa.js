@@ -55,9 +55,9 @@ adicionarTarefa('teste2', 'teste2');
 adicionarTarefa('teste3', 'teste1');
 visualizarLista();
 
-excluirTarefa(2);
+excluirTarefa(5);
 
 visualizarLista();
 */
 
-module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus};
+module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus, excluirTarefa};

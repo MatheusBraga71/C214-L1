@@ -1,8 +1,8 @@
 
 const { expect } = require('chai');
-const { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus } = require('../src/Tarefa');
+const { Tarefa, listaTarefas, adicionarTarefa, visualizarLista, atualizarStatus, excluirTarefa } = require('../src/Tarefa');
 
-describe('Teste da Lista de Tarefas', () => {
+describe('Testes da Lista de Tarefas', () => {
     beforeEach(function () {
         listaTarefas.length = 0; // Limpando a lista de tarefas antes de cada teste
     });
@@ -69,6 +69,20 @@ describe('Teste da Lista de Tarefas', () => {
         atualizarStatus(0, 'Em andamento');
 
         expect(listaTarefas[0].status).to.equal('Em andamento');
+
+    });
+
+    it('Testando a função de excluir um elemento da lista', function () {
+
+        const tarefa1 = new Tarefa('Tarefa 1', 'Descrição da Tarefa 1');
+        const tarefa2 = new Tarefa('Tarefa 2', 'Descrição da Tarefa 2');
+        listaTarefas.push(tarefa1);
+        listaTarefas.push(tarefa2);
+
+        excluirTarefa(0); // Removendo primeiro elemento
+
+        expect(listaTarefas.length).to.equal(1); // Verifica se removeu
+        expect(listaTarefas[0].titulo).to.equal('Tarefa 2'); // Verifica se atualizou os índices
 
     });
 

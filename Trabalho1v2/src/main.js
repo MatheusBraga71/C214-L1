@@ -55,7 +55,7 @@ function main() {
                     rl.question('Digite o número da tarefa que deseja atualizar o status: ', function (numTarefa) {
                         const index = parseInt(numTarefa) - 1;  // Alterando o tipo da resposta do usuário para Int e adequando às posições do vetor listaTarefas
 
-                        if (index >= 0 && index < listaTarefas.length) {
+                         if (index >= 0 && index < listaTarefas.length) {
                             console.log('\n[1] - A fazer');
                             console.log('[2] - Em andamento');
                             console.log('[3] - Concluída\n');
@@ -65,21 +65,25 @@ function main() {
                                 switch (numStatus) {
                                     case '1':
                                         listaTarefas[index].atualizaStatus('A fazer');
-                                        console.log('Status Atualizado com sucesso!\n');
+                                        console.log('Status Atualizado com sucesso!');
                                         break;
                                     case '2':
                                         listaTarefas[index].atualizaStatus('Em andamento');
-                                        console.log('Status Atualizado com sucesso!\n');
+                                        console.log('Status Atualizado com sucesso!');
                                         break;
                                     case '3':
                                         listaTarefas[index].atualizaStatus('Concluída');
-                                        console.log('Status Atualizado com sucesso!\n');
+                                        console.log('Status Atualizado com sucesso!');
                                         break;
                                     default:
                                         console.log("Opção Inválida!\n");
                                 }
                                 main();
                             });
+                        }
+                        else{
+                            console.log('Opção Inválida!');
+                            main();
                         }
                     });
                 }

@@ -64,15 +64,15 @@ function main() {
 
                                 switch (numStatus) {
                                     case '1':
-                                        listaTarefas[index].atualizaStatus('A fazer');
+                                        atualizarStatus(index, 'A fazer');
                                         console.log('Status Atualizado com sucesso!');
                                         break;
                                     case '2':
-                                        listaTarefas[index].atualizaStatus('Em andamento');
+                                        atualizarStatus(index, 'Em andamento');
                                         console.log('Status Atualizado com sucesso!');
                                         break;
                                     case '3':
-                                        listaTarefas[index].atualizaStatus('Concluída');
+                                        atualizarStatus(index, 'Concluída');
                                         console.log('Status Atualizado com sucesso!');
                                         break;
                                     default:
@@ -105,7 +105,7 @@ function main() {
                     rl.question('Digite o número da tarefa que deseja excluir: ', (numExcluir) => {
                         const index = parseInt(numExcluir) - 1;
                         if (index >= 0 && index < listaTarefas.length) {
-                            listaTarefas.splice(index, 1);
+                            excluirTarefa(index);
                             console.log('Tarefa excluída com sucesso!')
                             main();
                         }

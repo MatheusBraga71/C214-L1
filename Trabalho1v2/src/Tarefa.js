@@ -27,3 +27,18 @@ function adicionarTarefa(tituloTarefa, descricaoTarefa){
     console.log('Tarefa adicionada com sucesso!');
     console.log('');
 }
+
+function visualizarLista(){
+    if(listaTarefas.length === 0){
+        console.log('A Lista de Tarefas está vazia!');
+    }
+    else{
+        console.log('Lista de Tarefas: ')
+        for (let i = 0; i < listaTarefas.length; i++) {
+            listaTarefas[i].exibirTarefa();
+        }
+    }
+}
+
+
+module.exports = { Tarefa, listaTarefas, adicionarTarefa, visualizarLista};
